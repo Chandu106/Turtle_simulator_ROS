@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(my_robot_interfaces)
+project(my_robot_bringup)
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
@@ -12,14 +12,10 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rosidl_default_generators REQUIRED)
 
-rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/Turtle.msg"
-  "msg/TurtleArray.msg"
-  "srv/CatchTurtle.srv"
+install(DIRECTORY 
+  launch
+  DESTINATION share/${PROJECT_NAME}
 )
-
-ament_export_dependencies(rosidl_default_runtime)
 
 ament_package()
